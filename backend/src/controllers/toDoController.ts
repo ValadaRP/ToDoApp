@@ -41,13 +41,13 @@ export const createTodo: RequestHandler = async (req,res,next) => {
     res.status(201).json({message: `Your new todo is ${todo}`});
 }
 
-export const delteTodo: RequestHandler = async (req,res, next) => {
+export const delteTodo: RequestHandler = async (req, res, next) => {
     const {id} = req.body as {id: number};
     const todo: todo = await DBQueryParam(`SELECT * FROM todo where id = ?`, id);
     if(!todo){
-        return next(new HttpError("Todo with this id doesn't exist", 201));
+        return next(new HttpError("Todo with this id doesn't exist", 400));
     }
-    // await DBDelete(`DELETE from todo WHERE id = ?`,id);
+    await DBDelete(`DELETE from todo WHERE id = ?`,id);
 
     res.status(201).json({message: "You have sucesfully deleted todo"});
 }
