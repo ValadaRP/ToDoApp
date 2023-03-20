@@ -1,5 +1,4 @@
 import {RequestHandler} from 'express';
-import mysql from 'mysql2';
 import { DBQuery,DBQueryParam, DBUpdate, DBCreate } from '../models/DBConnect';
 import { Todo } from '../models/todo';
 
@@ -38,5 +37,5 @@ export const createTodo: RequestHandler = async (req,res,next) => {
     const todo: Todo = new Todo(name, content);
     await DBCreate(`INSERT INTO todo (Name, Content) VALUES (?, ?);`,todo.name, todo.content);
 
-    res.status(201).json({});
+    res.status(201).json({message: `Your new todo is ${todo}`});
 }

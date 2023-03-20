@@ -1,8 +1,5 @@
+import { query } from 'express';
 import mysql from 'mysql2';
-
-
-
-
 
 export const DBQuery = async (query:string) => {
     const pool = mysql.createPool({
@@ -50,5 +47,16 @@ export const DBCreate = async (query: string, name: string, content: string) => 
         database: process.env.DATABASE
     }).promise();
     await pool.query(query, [name, content]);
+    await pool.end();
+}
+
+export const DBDelete = async (query: string, param: number) => {
+    const pool = mysql.createPool({
+        host: process.env.HOST,
+        user: process.env.USER,
+        password: process.env.PASSWORD,
+        database: process.env.DATABASE
+    }).promise();
+    await pool.query(query, [param]);
     await pool.end();
 }
