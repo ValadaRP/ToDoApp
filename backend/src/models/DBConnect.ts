@@ -30,7 +30,7 @@ export const DBQueryParam = async (query: string, param: number | string) => {
     return rows[0];
 };
 
-export const DBUpdate = async (query: string, param: number | string ,name?: string, content?: string): Promise<void> => {
+export const DBUpdate = async (query: string, id: number | string ,name?: string, content?: string) => {
     const pool = mysql.createPool({
         host: process.env.HOST,
         user: process.env.USER,
@@ -38,6 +38,17 @@ export const DBUpdate = async (query: string, param: number | string ,name?: str
         database: process.env.DATABASE
     }).promise();
 
-    await pool.query(query, [param]);
+    await pool.query(query, [name, content, id]);
+    await pool.end();
+}
+
+export const DBCreate = async (query: string, name: string, content: string) => {
+    const pool = mysql.createPool({
+        host: process.env.HOST,
+        user: process.env.USER,
+        password: process.env.PASSWORD,
+        database: process.env.DATABASE
+    }).promise();
+    await pool.query(query, [name, content]);
     await pool.end();
 }

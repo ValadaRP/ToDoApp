@@ -1,6 +1,7 @@
 import {RequestHandler} from 'express';
 import mysql from 'mysql2';
-import { DBQuery,DBQueryParam, DBUpdate } from '../models/DBConnect';
+import { DBQuery,DBQueryParam, DBUpdate, DBCreate } from '../models/DBConnect';
+import { Todo } from '../models/todo';
 
 interface todo{
     Id:number;
@@ -25,9 +26,17 @@ export const getTodoById: RequestHandler<{id: number}> = async (req,res,next) =>
 }
 
 export const updateTodo: RequestHandler = async (req,res,next) => {
-    const todoId = (req.body as {id:number}).id;
-    const response = await DBQueryParam(`SELECT * FROM todo where id = ?`,todoId);
-    
+    // const todoId = (req.body as {id:number}).id;
+    const {id, name, content} = req.body as {id:number, name: string, content: string};
+    await DBUpdate(`UPDATE todo SET Name = ?, Content = ? WHERE Id = ?`,id,name, content);
+    res.status(201).json({message: `You have sucesfully updated todo: ${id}`});
+}
 
-    res.status(201).json({message: `Test: ${todoId}`});
+export const createTodo: RequestHandler = async (req,res,next) => {
+    const { name, content } = req.body as {name: string, content: string};
+
+    const todo: Todo = new Todo(name, content);
+    await DBCreate(`INSERT INTO todo (Name, Content) VALUES (?, ?);`,todo.name, todo.content);
+
+    res.status(201).json({});
 }
