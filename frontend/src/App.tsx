@@ -13,13 +13,7 @@ function App() {
     return res.data;
   }
 
-  const apiRequest = async () => {
-    return await axios.post('http://localhost:5000/todo/create',);
-  }
-
-  const addTodo = useMutation({
-    mutationFn: apiRequest,
-  });
+  
 
   const {data, isLoading} = useQuery({
     queryKey: ["todos"],
@@ -35,7 +29,7 @@ function App() {
     <>
       <div className="todoContainer">
         <TodoList items={data} />
-        <NewTodo addFunction={addTodo}/>
+        <NewTodo />
       </div>
     </>
   )
