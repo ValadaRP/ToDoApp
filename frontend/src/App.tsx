@@ -1,31 +1,42 @@
 import { useState, useEffect } from 'react';
-import TodoList from './components/TodoList';
-import { useQuery, useQueryClient} from '@tanstack/react-query';
+import TodoList, { Itodo } from './components/TodoList';
+import { useQuery, useQueryClient, useMutation} from '@tanstack/react-query';
 import axios from 'axios';
+import NewTodo, { InewTodo } from './components/NewTodo';
  
-
 
 function App() {
   const queryClient = useQueryClient();
 
-  const fetchData = async () => {
-    const res = await fetch('http://localhost:5000/todo/');
-    return res.json();
+  const fetchDataAxios = async (): Promise<Itodo> => {
+    const res = await axios.get('http://localhost:5000/todo/');
+    return res.data;
   }
+
+  const apiRequest = async () => {
+    return await axios.post('http://localhost:5000/todo/create',);
+  }
+
+  const addTodo = useMutation({
+    mutationFn: apiRequest,
+  });
 
   const {data, isLoading} = useQuery({
     queryKey: ["todos"],
-    queryFn: fetchData
-  });
+    queryFn: fetchDataAxios
+  }) as {data: Itodo, isLoading: boolean};
   
   
   if (isLoading){
     return <h1>Loading...</h1>
   }
-
+  
   return (
     <>
-      <TodoList items={data}/>
+      <div className="todoContainer">
+        <TodoList items={data} />
+        <NewTodo addFunction={addTodo}/>
+      </div>
     </>
   )
 }

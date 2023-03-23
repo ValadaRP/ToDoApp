@@ -1,25 +1,22 @@
 import React, { useEffect } from "react";
 import './TodoList.scss';
 
-export interface todo{
-    todo: {Id:string, Name: string, Content: "Test", Date: string}[];
-}
-export interface items{
-    items: todo;
+export interface Itodo{
+    todo: {Id:string, Name: string, Content: string, Date: string}[];
 }
 
-const TodoList:React.FC<{items:todo}> = props => {
 
-    console.log(props.items.todo[0].Content)
-    
+const TodoList:React.FC<{items:Itodo}> = props => {
+
     return(
-        <div className="todoContainer">
-            {props.items.todo.map((todo) => {
-                return(
-                    <p>{todo.Date}</p>
-                )
-            })}
-            
+        <div>
+            <ul>
+                {props.items.todo.map((todo) => {
+                    return(
+                        <li key={todo.Id}>{todo.Id + "." + " " + todo.Content}</li>
+                    )
+                })}
+            </ul>
         </div>
     );
 }
