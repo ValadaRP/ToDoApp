@@ -3,10 +3,12 @@ import {json} from 'body-parser';
 import { Request,Response,NextFunction } from 'express';
 import toDoRoutes from './routes/toDoRoutes';
 import { HttpError } from './models/http-error';
+import cors from 'cors';
 
 const app = express();
 
 app.use(json());
+app.use(cors());
 
 app.use('/todo', toDoRoutes);
 
