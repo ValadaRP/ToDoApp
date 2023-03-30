@@ -12,9 +12,7 @@ function App() {
     const res = await axios.get('http://localhost:5000/todo/');
     return res.data;
   }
-
   
-
   const {data, isLoading} = useQuery({
     queryKey: ["todos"],
     queryFn: fetchDataAxios
@@ -28,7 +26,7 @@ function App() {
   return (
     <>
       <div className="todoContainer">
-        <TodoList items={data} />
+        <TodoList items={data}/>
         <NewTodo />
       </div>
     </>
