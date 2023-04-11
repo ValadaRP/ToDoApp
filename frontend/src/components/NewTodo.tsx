@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
+import { toastSucces } from '../toast/toastFunction';
 
 export interface InewTodo{
     addFunction: () => void | any;
@@ -19,7 +20,10 @@ const NewTodo:React.FC = (props) => {
 
     const addTodo = useMutation({
         mutationFn: apiRequest,
-        onSuccess: () => {queryClient.invalidateQueries(['todos'])},
+        onSuccess: () => {
+        queryClient.invalidateQueries(['todos']);
+        toastSucces("New Todo added 👍");
+        },
       });
 
     const todoSumbitHandler = (event: React.FormEvent) => {
@@ -30,7 +34,6 @@ const NewTodo:React.FC = (props) => {
         });
         setNameInput("");
         setContentInput("");
-        // apiRequest();
     }
 
     return(

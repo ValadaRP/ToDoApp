@@ -46,10 +46,21 @@ $handDrown: 'Roboto', sans-serif;
                 li{
                     padding: 0.5rem;
                     background-color: brown;
-                    width: 90%;
+                    width: 100%;
                     border-radius: 1rem;
                     border: 0.5px solid #000;
                     box-shadow: 0px 3px 1px 1px rgba(66, 68, 90, 1);
+                }
+                svg{
+                    font-size: 2rem;
+                    &:hover{
+                        cursor: pointer;
+                        fill: red;
+                    }
+                    &:active{
+                        cursor: pointer;
+                        fill: rgb(160, 18, 18);
+                    }
                 }
             }
             
@@ -85,7 +96,7 @@ $handDrown: 'Roboto', sans-serif;
                 cursor: pointer;
             }
             &:active{
-                background-color: brown;
+                background-color: rgb(119, 15, 15);
                 color: white;
                 cursor: pointer;
             }

@@ -2,6 +2,7 @@ import React from 'react';
 import {RiDeleteBack2Line} from 'react-icons/ri';
 import axios from 'axios';
 import { useQueryClient, useMutation} from '@tanstack/react-query';
+import { toastSucces } from '../toast/toastFunction';
 
 interface IdeleteTodo{
     todoId: number;
@@ -17,7 +18,9 @@ const DeleteTodo: React.FC<IdeleteTodo> = (props) => {
       }
       const deleteTodo = useMutation({
         mutationFn: apiCall,
-        onSuccess: () => {queryClient.invalidateQueries(['todos'])},
+        onSuccess: () => {queryClient.invalidateQueries(['todos'])
+        toastSucces(`Todo with id ${props.todoId} deleted 👍`);
+      },
       });
 
       const todoDeleteHandler = (event: React.FormEvent) => {
@@ -27,7 +30,9 @@ const DeleteTodo: React.FC<IdeleteTodo> = (props) => {
         });
     }
 
-    return <RiDeleteBack2Line onClick={todoDeleteHandler}/>;
+    return (
+      <RiDeleteBack2Line onClick={todoDeleteHandler}/>
+    );
 };
 
 export default DeleteTodo;

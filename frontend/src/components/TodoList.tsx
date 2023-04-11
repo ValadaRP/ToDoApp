@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
 import './TodoList.scss';
-
-import { UseMutationResult } from "@tanstack/react-query";
 import DeleteTodo from "./DeleteTodo";
 
 export interface Itodo{
     todo: {Id:string, Name: string, Content: string, Date: string}[];
-    onDelete: (id:number) => UseMutationResult<{id:number}>;
 }
 
 
