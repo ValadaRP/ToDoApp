@@ -43,9 +43,13 @@ const DeleteTodo: React.FC<IdeleteTodo> = (props) => {
         <RiDeleteBack2Line onClick={handleOpenDialog}/>
         <Dialog open={isOpen} onClose={handleOpenDialog}>
           <div className='delete_dialog'>
-            <h1>{props.dialogHeader}</h1>
-            <button onClick={todoDeleteHandler}>Yes</button>
-            <button onClick={handleOpenDialog}>No</button>
+            <div className='container'>
+              <span>{props.dialogHeader}</span>
+              <div className='dialog_buttons'>
+                <button onClick={todoDeleteHandler}>Yes</button>
+                <button onClick={handleOpenDialog}>No</button>
+              </div>
+            </div>
           </div>
         </Dialog>
       </>

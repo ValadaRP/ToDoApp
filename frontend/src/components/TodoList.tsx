@@ -16,7 +16,7 @@ const TodoList:React.FC<{items:Itodo}> = props => {
                     return(
                         <div key={todo.Id}>
                             <li>{todo.Id + "." + " " + todo.Content}</li>
-                            <DeleteTodo todoId={parseInt(todo.Id)} dialogHeader="Are you sure you want to delete?"/>
+                            <DeleteTodo todoId={parseInt(todo.Id)} dialogHeader="Are you sure you want to delete"/>
                         </div>
                     )
                 })}
