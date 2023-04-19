@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {RiDeleteBack2Line} from 'react-icons/ri';
 import axios from 'axios';
 import { useQueryClient, useMutation} from '@tanstack/react-query';
-import { toastSucces } from '../toast/toastFunction';
+import { toastError, toastSucces } from '../toast/toastFunction';
 import { Dialog } from '@mui/material';
 import './DeleteDialog.scss';
 
@@ -28,7 +28,8 @@ const DeleteTodo: React.FC<IdeleteTodo> = (props) => {
         mutationFn: apiCall,
         onSuccess: () => {queryClient.invalidateQueries(['todos'])
         toastSucces(`Todo with id ${props.todoId} deleted 👍`);
-      },
+        },
+        onError: () => {toastError('Something went wrong 😢')}
       });
 
       const todoDeleteHandler = (event: React.FormEvent) => {
