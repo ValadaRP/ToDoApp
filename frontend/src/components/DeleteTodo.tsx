@@ -4,11 +4,11 @@ import axios from 'axios';
 import { useQueryClient, useMutation} from '@tanstack/react-query';
 import { toastSucces } from '../toast/toastFunction';
 import { Dialog } from '@mui/material';
-import './Dialog.scss';
+import './DeleteDialog.scss';
 
 interface IdeleteTodo{
     todoId: number;
-    dialogHeader: string;
+    dialogHeader?: string;
 }
 
 const DeleteTodo: React.FC<IdeleteTodo> = (props) => {

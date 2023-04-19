@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import './TodoList.scss';
 import DeleteTodo from "./DeleteTodo";
+import UpdateTodo from "./UpdateTodo";
 
 export interface Itodo{
     todo: {Id:string, Name: string, Content: string, Date: string}[];
@@ -17,6 +18,7 @@ const TodoList:React.FC<{items:Itodo}> = props => {
                         <div key={todo.Id}>
                             <li>{todo.Id + "." + " " + todo.Content}</li>
                             <DeleteTodo todoId={parseInt(todo.Id)} dialogHeader="Are you sure you want to delete"/>
+                            <UpdateTodo />
                         </div>
                     )
                 })}

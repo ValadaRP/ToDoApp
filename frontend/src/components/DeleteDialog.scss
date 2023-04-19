@@ -38,7 +38,10 @@ $handDrown: 'Roboto', sans-serif;
                 border-radius: 5px;
                 &:hover{
                     cursor: pointer;
-                    background-color: #bd3131;
+                    background-color: #eb0606;
+                }
+                &:focus{
+                    background-color: #c50b0b;
                 }
             }
             button:nth-child(2){
