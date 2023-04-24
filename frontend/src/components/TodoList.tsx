@@ -4,7 +4,7 @@ import DeleteTodo from "./DeleteTodo";
 import UpdateTodo from "./UpdateTodo";
 
 export interface Itodo{
-    todo: {Id:string, Name: string, Content: string, Date: string}[];
+    todo: {id:string, name: string, content: string, date: string}[];
 }
 
 
@@ -15,10 +15,13 @@ const TodoList:React.FC<{items:Itodo}> = props => {
             <ul>
                 {props.items.todo.map((todo) => {
                     return(
-                        <div key={todo.Id}>
-                            <li>{todo.Id + "." + " " + todo.Content}</li>
-                            <DeleteTodo todoId={parseInt(todo.Id)} dialogHeader="Are you sure you want to delete"/>
-                            <UpdateTodo todoId={parseInt(todo.Id)} name={todo.Name} content={todo.Content} dialogHeader="Update"/>
+                        <div key={todo.id}>
+                            <li>
+                                <span>{todo.id + ". " + todo.name}</span>
+                                <span>{" " + todo.content}</span>
+                            </li>
+                            <DeleteTodo todoId={parseInt(todo.id)} dialogHeader="Are you sure you want to delete"/>
+                            <UpdateTodo todoId={parseInt(todo.id)} name={todo.name} content={todo.content} dialogHeader="Update"/>
                         </div>
                     )
                 })}

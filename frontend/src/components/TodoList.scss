@@ -43,13 +43,20 @@ $handDrown: 'Roboto', sans-serif;
                 flex-direction: row;
                 width: 100%;
                 gap: 10px;
+                
                 li{
+                    display: flex;
+                    flex-direction: column;
                     padding: 0.5rem;
                     background-color: brown;
                     width: 100%;
                     border-radius: 1rem;
                     border: 0.5px solid #000;
                     box-shadow: 0px 3px 1px 1px rgba(66, 68, 90, 1);
+                    span:nth-child(1){
+                        font-size: 1.75rem;
+                        font-weight: bold;
+                    }
                 }
                 svg{
                     font-size: 2rem;
