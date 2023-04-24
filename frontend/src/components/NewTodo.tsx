@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
-import { toastSucces } from '../toast/toastFunction';
+import { toastError, toastSucces } from '../toast/toastFunction';
 
 export interface InewTodo{
     addFunction: () => void | any;
@@ -23,6 +23,9 @@ const NewTodo:React.FC = (props) => {
         onSuccess: () => {
         queryClient.invalidateQueries(['todos']);
         toastSucces("New Todo added 👍");
+        },
+        onError: () => {
+            toastError("Something went wrong 😢");
         },
       });
 
