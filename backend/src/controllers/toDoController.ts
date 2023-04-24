@@ -2,6 +2,7 @@ import {RequestHandler} from 'express';
 import { Todo } from '../models/todo';
 import { HttpError } from '../models/http-error';
 import { PrismaClient } from '@prisma/client';
+import { validationResult } from 'express-validator/src/validation-result';
 
 const prisma = new PrismaClient()
 
@@ -48,6 +49,10 @@ export const updateTodo: RequestHandler = async (req,res,next) => {
 }
 
 export const createTodo: RequestHandler = async (req,res,next) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return next(new HttpError("Invalid inputs passed", 422));
+    }
     const { name, content } = req.body as {name: string, content: string};
 
     const todo: Todo = new Todo(name, content);
