@@ -56,7 +56,7 @@ export const createTodo: RequestHandler = async (req,res,next) => {
     const { name, content } = req.body as {name: string, content: string};
 
     const todo: Todo = new Todo(name, content);
-    await prisma.todo.create({data: {name: todo.name, content: todo.content}});
+    await prisma.todo.create({data: {name: todo.name, content: todo.content, userId: "edf401fc-711f-4af4-ab11-95384c0c28aa"}});
     
     await prisma.$disconnect();
     
@@ -65,9 +65,12 @@ export const createTodo: RequestHandler = async (req,res,next) => {
 
 export const delteTodo: RequestHandler = async (req, res, next) => {
     const {id} = req.body as {id: string};
-    // if(!todo){
-    //     return next(new HttpError("Todo with this id doesn't exist", 400));
-    // }
+    const todo = await prisma.todo.findFirst({where: {
+        id: id
+    }});
+    if(!todo){
+        return next(new HttpError("Todo with this id doesn't exist", 400));
+    }
     await prisma.todo.delete({
         where: {
             id: id

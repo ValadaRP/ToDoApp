@@ -6,8 +6,8 @@ const router = Router();
 
 router.get('/', getTodo);
 router.get('/:id', getTodoById);
-router.post('/update', updateTodo);
+router.post('/update',[check("name").not().isEmpty().isString(),check("content").not().isEmpty().isString()] ,updateTodo);
 router.post('/create',[check("name").not().isEmpty().isString(),check("content").not().isEmpty().isString()] ,createTodo);
-router.post('/delete', delteTodo);
+router.post('/delete',[check("id").not().isEmpty().isString()], delteTodo);
 
 export default router;
