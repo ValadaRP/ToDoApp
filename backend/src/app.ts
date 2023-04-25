@@ -2,6 +2,7 @@ import express, { RequestHandler } from 'express';
 import {json} from 'body-parser';
 import { Request,Response,NextFunction } from 'express';
 import toDoRoutes from './routes/toDoRoutes';
+import userRoutes from './routes/userRoutes';
 import { HttpError } from './models/http-error';
 import cors from 'cors';
 
@@ -11,6 +12,7 @@ app.use(json());
 app.use(cors());
 
 app.use('/todo', toDoRoutes);
+app.use('/user', userRoutes);
 
 app.use((req,res,next): RequestHandler => {
     const error = new HttpError('Could not find this route.', 404);

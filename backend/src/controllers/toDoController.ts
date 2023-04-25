@@ -4,10 +4,10 @@ import { HttpError } from '../models/http-error';
 import { PrismaClient } from '@prisma/client';
 import { validationResult } from 'express-validator/src/validation-result';
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 interface todo{
-    id:number;
+    id:string;
     name:string;
     content: string;
     completed: boolean;
@@ -21,7 +21,7 @@ export const getTodo: RequestHandler = async (req,res,next) => {
     res.status(201).json({todo: todos});
 };
 
-export const getTodoById: RequestHandler<{id: number}> = async (req,res,next) => {
+export const getTodoById: RequestHandler<{id: string}> = async (req,res,next) => {
     const todoId = req.params.id;
     const todo = await prisma.todo.findFirst({
         where: {
@@ -34,7 +34,7 @@ export const getTodoById: RequestHandler<{id: number}> = async (req,res,next) =>
 
 export const updateTodo: RequestHandler = async (req,res,next) => {
     // const todoId = (req.body as {id:number}).id;
-    const {id, name, content} = req.body as {id:number, name: string, content: string};
+    const {id, name, content} = req.body as {id:string, name: string, content: string};
     await prisma.todo.update({
         where: {
             id: id
@@ -64,7 +64,7 @@ export const createTodo: RequestHandler = async (req,res,next) => {
 }
 
 export const delteTodo: RequestHandler = async (req, res, next) => {
-    const {id} = req.body as {id: number};
+    const {id} = req.body as {id: string};
     // if(!todo){
     //     return next(new HttpError("Todo with this id doesn't exist", 400));
     // }
