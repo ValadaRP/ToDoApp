@@ -7,7 +7,7 @@ import { Dialog } from '@mui/material';
 import './DeleteDialog.scss';
 
 interface IdeleteTodo{
-    todoId: number;
+    todoId: string;
     dialogHeader?: string;
 }
 

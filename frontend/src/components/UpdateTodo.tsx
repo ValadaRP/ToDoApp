@@ -7,7 +7,7 @@ import axios from "axios";
 import { toastError, toastSucces } from "../toast/toastFunction";
 
 interface IUpdateTodo{
-    todoId: number;
+    todoId: string;
     name: string;
     content: string;
     dialogHeader?: string;
@@ -22,7 +22,7 @@ const UpdateTodo:FC<IUpdateTodo> = (props) => {
     const handleOpenDialog = () => {
         setIsOpen(!isOpen);
     }
-    const apiRequest = async ({id, name, content} : {id: number,name: string, content: string}): Promise<any> => {
+    const apiRequest = async ({id, name, content} : {id: string,name: string, content: string}): Promise<any> => {
         return await axios.post('http://localhost:5000/todo/update', {
             id,name,content
         });

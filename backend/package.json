@@ -23,6 +23,8 @@
   "homepage": "https://github.com/ValadaRP/ToDoApp#readme",
   "dependencies": {
     "@prisma/client": "^4.13.0",
+    "@types/bcrypt": "^5.0.0",
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
     "express-validator": "^7.0.1"

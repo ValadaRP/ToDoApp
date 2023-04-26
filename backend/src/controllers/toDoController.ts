@@ -4,6 +4,7 @@ import { HttpError } from '../models/http-error';
 import { PrismaClient } from '@prisma/client';
 import { validationResult } from 'express-validator/src/validation-result';
 
+
 const prisma = new PrismaClient();
 
 interface todo{
@@ -56,7 +57,7 @@ export const createTodo: RequestHandler = async (req,res,next) => {
     const { name, content } = req.body as {name: string, content: string};
 
     const todo: Todo = new Todo(name, content);
-    await prisma.todo.create({data: {name: todo.name, content: todo.content, userId: "edf401fc-711f-4af4-ab11-95384c0c28aa"}});
+    await prisma.todo.create({data: {name: todo.name, content: todo.content, userId: "fcf130cc-4ac1-43bb-8d59-ce0621d7f288"}});
     
     await prisma.$disconnect();
     

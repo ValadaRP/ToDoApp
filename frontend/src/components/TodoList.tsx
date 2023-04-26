@@ -17,11 +17,11 @@ const TodoList:React.FC<{items:Itodo}> = props => {
                     return(
                         <div key={todo.id}>
                             <li>
-                                <span>{todo.id + ". " + todo.name}</span>
+                                <span>{todo.name}</span>
                                 <span>{" " + todo.content}</span>
                             </li>
-                            <DeleteTodo todoId={parseInt(todo.id)} dialogHeader="Are you sure you want to delete"/>
-                            <UpdateTodo todoId={parseInt(todo.id)} name={todo.name} content={todo.content} dialogHeader="Update"/>
+                            <DeleteTodo todoId={todo.id} dialogHeader="Are you sure you want to delete"/>
+                            <UpdateTodo todoId={todo.id} name={todo.name} content={todo.content} dialogHeader="Update"/>
                         </div>
                     )
                 })}
