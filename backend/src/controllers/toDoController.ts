@@ -7,15 +7,6 @@ import { validationResult } from 'express-validator/src/validation-result';
 
 const prisma = new PrismaClient();
 
-interface todo{
-    id:string;
-    name:string;
-    content: string;
-    completed: boolean;
-    createdAt: Date;
-
-}
-
 export const getTodo: RequestHandler = async (req,res,next) => {
     const todos = await prisma.todo.findMany();
     prisma.$disconnect();
