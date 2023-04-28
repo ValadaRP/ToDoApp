@@ -3,9 +3,11 @@ $handDrown: 'Roboto', sans-serif;
 
 .edit_icon{
     font-size: 2rem;
+    transition: ease-in-out 0.2s;
     &:hover{
         cursor: pointer;
         fill: blue;
+        transform: scale(1.2);
     }
     &:active{
         cursor: pointer;
@@ -23,6 +25,7 @@ $handDrown: 'Roboto', sans-serif;
         flex-direction: column;
         
         span{
+            font-weight: 600;
             display: flex;
             justify-content: center;
             align-items: center;

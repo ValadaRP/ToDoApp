@@ -5,6 +5,7 @@ import {AiOutlineEdit} from 'react-icons/ai';
 import './UpdateTodo.scss';
 import axios from "axios";
 import { toastError, toastSucces } from "../toast/toastFunction";
+import { error } from "./NewTodo";
 
 interface IUpdateTodo{
     todoId: string;
@@ -33,7 +34,7 @@ const UpdateTodo:FC<IUpdateTodo> = (props) => {
         queryClient.invalidateQueries(['todos']);
         toastSucces("You have succesfully updated the Todo! 👍");
         },
-        onError: () => {toastError("Something went wrong, please try again later! 🤔")},
+        onError: (error) => {toastError(`${(error as error).response.data.message}`)},
       });
 
     const handleFormSubmit = (event: React.FormEvent) => {
