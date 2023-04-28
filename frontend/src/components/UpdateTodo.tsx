@@ -48,7 +48,7 @@ const UpdateTodo:FC<IUpdateTodo> = (props) => {
 
     return (
         <>
-            <AiOutlineEdit onClick={handleOpenDialog}/>
+            <AiOutlineEdit onClick={handleOpenDialog} className="edit_icon"/>
             <Dialog open={isOpen} onClose={handleOpenDialog}>
                 <div className="update_dialog">
                     <div className="container">

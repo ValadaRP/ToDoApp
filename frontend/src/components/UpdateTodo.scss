@@ -1,6 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 $handDrown: 'Roboto', sans-serif;
 
+.edit_icon{
+    font-size: 2rem;
+    &:hover{
+        cursor: pointer;
+        fill: blue;
+    }
+    &:active{
+        cursor: pointer;
+        fill: rgb(3, 22, 109);
+    }
+}
 .update_dialog{
     font-family: $handDrown;
     width: 500px;

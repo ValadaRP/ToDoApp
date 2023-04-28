@@ -28,7 +28,7 @@ const DeleteTodo: React.FC<IdeleteTodo> = (props) => {
       const deleteTodo = useMutation({
         mutationFn: apiCall,
         onSuccess: () => {queryClient.invalidateQueries(['todos'])
-        toastSucces(`Todo with id ${props.todoId} deleted 👍`);
+        toastSucces(`Todo was deleted succesfully 👍`);
         },
         onError: (error) => {toastError(`${(error as error).response.data.message} 😢`)}
       });
@@ -42,7 +42,7 @@ const DeleteTodo: React.FC<IdeleteTodo> = (props) => {
 
     return (
       <>
-        <RiDeleteBack2Line onClick={handleOpenDialog}/>
+        <RiDeleteBack2Line onClick={handleOpenDialog} className='delete_icon'/>
         <Dialog open={isOpen} onClose={handleOpenDialog}>
           <div className='delete_dialog'>
             <div className='container'>

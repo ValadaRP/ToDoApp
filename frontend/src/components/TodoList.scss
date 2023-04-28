@@ -18,10 +18,30 @@ $handDrown: 'Roboto', sans-serif;
         justify-content: center;
         align-items: center;
         
+        .header_container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            gap: 15px;
+            h1{
+                font-family: $handDrown;
+            }
+            svg{
+                font-size: 2rem;
+                &:hover{
+                    cursor: pointer;
+                    fill: green;
+                }
+                &:active{
+                    cursor: pointer;
+                    fill: rgb(3, 99, 30);
+                }
+            }
 
-        h1{
-            font-family: $handDrown;
         }
+
+        
         ul{
             list-style: none;
             margin: 0;
@@ -58,55 +78,10 @@ $handDrown: 'Roboto', sans-serif;
                         font-weight: bold;
                     }
                 }
-                svg{
-                    font-size: 2rem;
-                    &:hover{
-                        cursor: pointer;
-                        fill: red;
-                    }
-                    &:active{
-                        cursor: pointer;
-                        fill: rgb(160, 18, 18);
-                    }
-                }
+                
             }
             
         }
     }
-    form{
-        font-family: $handDrown;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 10px;
-        div{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            label{
-                font-size: 1.5rem;
-            }
-            input{
-                border-radius: 5px;
-                height: 1.5rem;
-            }
-        }
-        button{
-            border-radius: 5px;
-            height: 2rem;
-            width: 10rem;
-            &:hover{
-                background-color: brown;
-                color: white;
-                cursor: pointer;
-            }
-            &:active{
-                background-color: rgb(119, 15, 15);
-                color: white;
-                cursor: pointer;
-            }
-        }
-    }
+    
 }

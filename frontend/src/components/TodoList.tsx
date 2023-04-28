@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import './TodoList.scss';
 import DeleteTodo from "./DeleteTodo";
 import UpdateTodo from "./UpdateTodo";
+import NewTodo from "./NewTodo";
 
 export interface Itodo{
     todo: {id:string, name: string, content: string, date: string}[];
@@ -11,7 +12,10 @@ export interface Itodo{
 const TodoList:React.FC<{items:Itodo}> = props => {
     return(
         <div id="todoList">
-            <h1>Your todo to do 😁</h1>
+            <div className="header_container">
+                <h1>Your todo to do 😁</h1>
+                <NewTodo />
+            </div>
             <ul>
                 {props.items.todo.map((todo) => {
                     return(

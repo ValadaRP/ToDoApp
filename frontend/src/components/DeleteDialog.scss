@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 $handDrown: 'Roboto', sans-serif;
 
+.delete_icon{
+    font-size: 2rem;
+    &:hover{
+        cursor: pointer;
+        fill: #c00c0c;
+    }
+    &:active{
+        cursor: pointer;
+        fill: #d30e0e;
+    }
+
+}
 .delete_dialog{
     font-family: $handDrown;
     width: 500px;

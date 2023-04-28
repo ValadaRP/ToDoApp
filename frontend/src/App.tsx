@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import TodoList, { Itodo } from './components/TodoList';
 import { useQuery, useQueryClient, useMutation} from '@tanstack/react-query';
 import axios from 'axios';
-import NewTodo, { InewTodo } from './components/NewTodo';
 
  
 
@@ -28,7 +27,6 @@ function App() {
     <>
       <div className="todoContainer">
         <TodoList items={data}/>
-        <NewTodo />
       </div>
     </>
   )
