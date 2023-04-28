@@ -48,7 +48,7 @@ export const createTodo: RequestHandler = async (req,res,next) => {
     const { name, content } = req.body as {name: string, content: string};
 
     const todo: Todo = new Todo(name, content);
-    await prisma.todo.create({data: {name: todo.name, content: todo.content, userId: "fcf130cc-4ac1-43bb-8d59-ce0621d7f288"}});
+    await prisma.todo.create({data: {name: todo.name, content: todo.content, userId: "06ecd60e-bb41-457b-88c3-680fcdfbdad4"}});
     
     await prisma.$disconnect();
     

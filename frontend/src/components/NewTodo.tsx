@@ -6,6 +6,13 @@ import { toastError, toastSucces } from '../toast/toastFunction';
 export interface InewTodo{
     addFunction: () => void | any;
 }
+export interface error{
+    response: {
+        data: {
+            message: string;
+        }
+    }
+}
 
 const NewTodo:React.FC = (props) => {
     const queryClient = useQueryClient();
@@ -24,8 +31,8 @@ const NewTodo:React.FC = (props) => {
         queryClient.invalidateQueries(['todos']);
         toastSucces("New Todo added 👍");
         },
-        onError: () => {
-            toastError("Something went wrong 😢");
+        onError: (error) => {
+            toastError(`${(error as error).response.data.message} 😱`);
         },
       });
 

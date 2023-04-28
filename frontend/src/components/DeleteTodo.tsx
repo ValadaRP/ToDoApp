@@ -5,6 +5,7 @@ import { useQueryClient, useMutation} from '@tanstack/react-query';
 import { toastError, toastSucces } from '../toast/toastFunction';
 import { Dialog } from '@mui/material';
 import './DeleteDialog.scss';
+import { error } from './NewTodo';
 
 interface IdeleteTodo{
     todoId: string;
@@ -19,7 +20,7 @@ const DeleteTodo: React.FC<IdeleteTodo> = (props) => {
       setIsOpen(!isOpen);
     };
 
-    const apiCall = async ({id}: {id: number}): Promise<any> => {
+    const apiCall = async ({id}: {id: string}): Promise<any> => {
         return await axios.post('http://localhost:5000/todo/delete',{
           id
         });
@@ -29,7 +30,7 @@ const DeleteTodo: React.FC<IdeleteTodo> = (props) => {
         onSuccess: () => {queryClient.invalidateQueries(['todos'])
         toastSucces(`Todo with id ${props.todoId} deleted 👍`);
         },
-        onError: () => {toastError('Something went wrong 😢')}
+        onError: (error) => {toastError(`${(error as error).response.data.message} 😢`)}
       });
 
       const todoDeleteHandler = (event: React.FormEvent) => {
